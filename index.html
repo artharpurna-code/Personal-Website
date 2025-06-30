@@ -1,1 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rohit Bornarkar | Life Transformation & Business Excellence</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #1a252f 0%, #2c3e50 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #3498db;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        .hero .subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            color: #bdc3c7;
+            font-style: italic;
+        }
+
+        .credentials {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .credential {
+            background: rgba(255,255,255,0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.4);
+        }
+
+        /* About Section */
+        .about {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #2c3e50;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(135deg, #3498db, #2980b9);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image {
+            text-align: center;
+        }
+
+        .about-image img {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #ecf0f1;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(135deg, #3498db, #2980b9);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: #3498db;
+        }
+
+        .service-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        .brand-name {
+            color: #3498db;
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        /* Wheel Section */
+        .wheel-section {
+            padding: 80px 0;
+            background: white;
+            text-align: center;
+        }
+
+        .wheel-container {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .life-wheel {
+            width: 400px;
+            height: 400px;
+            margin: 0 auto 2rem;
+            position: relative;
+            border: 3px solid #3498db;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ecf0f1, #bdc3c7);
+        }
+
+        .wheel-segment {
+            position: absolute;
+            width: 50%;
+            height: 50%;
+            border-right: 1px solid #3498db;
+            border-bottom: 1px solid #3498db;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #2c3e50;
+            text-align: center;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            color: #3498db;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        .contact-info p {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            padding: 1rem;
+            border: 2px solid #ecf0f1;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+
+        .contact-form button {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .contact-form button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: #1a252f;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .credentials {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .life-wheel {
+                width: 300px;
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">Rohit Bornarkar</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Rohit Bornarkar</h1>
+                <p class="subtitle">Transforming Lives • Elevating Businesses • Creating Excellence</p>
+                <div class="credentials">
+                    <span class="credential">CFP - Certified Financial Planner</span>
+                    <span class="credential">RIA - Registered Investment Advisor</span>
+                    <span class="credential">IIM Ahmedabad MBA</span>
+                    <span class="credential">COO - The Financialist</span>
+                </div>
+                <a href="#services" class="cta-button">Discover Your Potential</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Rohit</h2>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'%3E%3Crect width='300' height='300' fill='%23f8f9fa'/%3E%3Ctext x='150' y='160' text-anchor='middle' font-family='Arial' font-size='16' fill='%236c757d'%3EProfessional Portrait%3C/text%3E%3C/svg%3E" alt="Rohit Bornarkar">
+                </div>
+                <div class="about-text">
+                    <p>With over a decade of experience in financial consulting and wealth management, Rohit Bornarkar stands as a beacon of excellence in both personal transformation and business optimization. As the Chief Operating Officer and Principal Wealth Advisor at The Financialist, he has democratized private wealth management across India.</p>
+                    
+                    <p>Armed with an MBA from the prestigious Indian Institute of Management Ahmedabad and holding the distinguished CFP (Certified Financial Planner) and RIA (Registered Investment Advisor) credentials, Rohit brings unparalleled expertise to his dual mission of life coaching and business consultancy.</p>
+                    
+                    <p>Through his innovative approaches with <strong>Super Life</strong> and <strong>ExcelMidas</strong>, Rohit has transformed hundreds of lives and businesses, creating a legacy of sustainable success and balanced living. His philosophy centers on the belief that true prosperity encompasses both personal fulfillment and professional excellence.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">Transformative Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🌟</div>
+                    <h3><span class="brand-name">Super Life</span> - Life Transformation</h3>
+                    <p>Join an exclusive community of <strong>Super Beings</strong> who have mastered the art of balanced living. Our comprehensive life coaching program focuses on the 8-dimensional life wheel, where each aspect of your existence is measured and optimized on a scale of 1 to 10.</p>
+                    <p><strong>The 8 Life Dimensions:</strong></p>
+                    <ul style="margin-top: 1rem; line-height: 1.8;">
+                        <li>Career & Professional Growth</li>
+                        <li>Health & Physical Vitality</li>
+                        <li>Relationships & Social Connections</li>
+                        <li>Financial Wealth & Security</li>
+                        <li>Personal Growth & Learning</li>
+                        <li>Recreation & Fun</li>
+                        <li>Contribution & Purpose</li>
+                        <li>Spiritual & Mental Well-being</li>
+                    </ul>
+                    <p style="margin-top: 1rem;">Experience true harmony as we guide you to excel in every dimension while maintaining perfect balance and genuine happiness in whatever you pursue.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">⚡</div>
+                    <h3><span class="brand-name">ExcelMidas</span> - Business Excellence</h3>
+                    <p>Transform your business into a gold standard operation with our cutting-edge consultancy services. We conduct comprehensive audits across all departments and create strategic action plans to achieve optimum efficiency.</p>
+                    <p><strong>Our Optimization Framework:</strong></p>
+                    <ul style="margin-top: 1rem; line-height: 1.8;">
+                        <li>Human Resource Optimization</li>
+                        <li>Financial Resource Management</li>
+                        <li>Technology Integration & Automation</li>
+                        <li>Process Re-engineering</li>
+                        <li>Strategic Planning & Execution</li>
+                        <li>Performance Measurement Systems</li>
+                        <li>Risk Management & Compliance</li>
+                        <li>Sustainable Growth Strategies</li>
+                    </ul>
+                    <p style="margin-top: 1rem;">Unlock your business's hidden potential and achieve the Midas touch - where everything you touch turns to sustainable success and profitability.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="wheel-section">
+        <div class="container">
+            <h2 class="section-title">The Super Life Wheel</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 3rem; color: #7f8c8d;">Measure and optimize every dimension of your existence</p>
+            <div class="wheel-container">
+                <div class="life-wheel">
+                    <div class="wheel-segment" style="top: 0; left: 50%; transform-origin: 0 100%; transform: rotate(-45deg);">Career</div>
+                    <div class="wheel-segment" style="top: 0; right: 0; transform-origin: 0 100%; transform: rotate(45deg);">Health</div>
+                    <div class="wheel-segment" style="bottom: 0; right: 0; transform-origin: 0 0; transform: rotate(-45deg);">Relationships</div>
+                    <div class="wheel-segment" style="bottom: 0; left: 50%; transform-origin: 0 0; transform: rotate(45deg);">Finance</div>
+                    <div class="wheel-segment" style="top: 50%; left: 0; transform-origin: 100% 0; transform: rotate(45deg);">Growth</div>
+                    <div class="wheel-segment" style="top: 50%; right: 0; transform-origin: 0 0; transform: rotate(-45deg);">Recreation</div>
+                    <div class="wheel-segment" style="bottom: 50%; left: 0; transform-origin: 100% 100%; transform: rotate(-45deg);">Purpose</div>
+                    <div class="wheel-segment" style="bottom: 50%; right: 0; transform-origin: 0 100%; transform: rotate(45deg);">Spiritual</div>
+                </div>
+                <p style="font-style: italic; color: #7f8c8d;">Each dimension scaled from 1-10 for perfect life balance</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Success Stories</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial">
+                    <p class="testimonial-text">"Rohit's Super Life program completely transformed my perspective. I went from struggling in multiple areas to achieving consistent 8+ scores across all life dimensions."</p>
+                    <p class="testimonial-author">- Sarah M., Super Being Community</p>
+                </div>
+                <div class="testimonial">
+                    <p class="testimonial-text">"ExcelMidas helped our company increase efficiency by 300% within 6 months. The ROI on their consultancy was exceptional."</p>
+                    <p class="testimonial-author">- Raj P., CEO, Tech Solutions</p>
+                </div>
+                <div class="testimonial">
+                    <p class="testimonial-text">"The 8-dimensional approach to life coaching is revolutionary. For the first time, I feel truly balanced and purposeful."</p>
+                    <p class="testimonial-author">- Dr. Priya K., Medical Professional</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Connect with Excellence</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Ready to Transform?</h3>
+                    <p>Whether you're seeking personal transformation through <strong>Super Life</strong> or business excellence with <strong>ExcelMidas</strong>, the journey to your best self starts with a single conversation.</p>
+                    <p><strong>Professional Credentials:</strong></p>
+                    <p>✓ Certified Financial Planner (CFP)<br>
+                       ✓ Registered Investment Advisor (RIA)<br>
+                       ✓ IIM Ahmedabad MBA<br>
+                       ✓ COO, The Financialist</p>
+                    <p><strong>Location:</strong> Pune, Maharashtra</p>
+                    <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/rohit-bornarkar/" style="color: #3498db;">Rohit Bornarkar</a></p>
+                </div>
+                <form class="contact-form">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <input type="text" placeholder="Subject">
+                    <textarea rows="5" placeholder="Tell us about your goals and how we can help you achieve excellence..." required></textarea>
+                    <button type="submit">Begin Your Transformation</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Rohit Bornarkar. All rights reserved. | Transforming Lives • Elevating Businesses • Creating Excellence</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Contact form handling
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your interest! Rohit will connect with you soon to discuss your transformation journey.');
+            this.reset();
+        });
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'linear-gradient(135deg, rgba(26, 37, 47, 0.95) 0%, rgba(44, 62, 80, 0.95) 100%)';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.background = 'linear-gradient(135deg, #1a252f 0%, #2c3e50 100%)';
+                header.style.backdropFilter = 'none';
+            }
+        });
+
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe service cards and other elements
+        document.querySelectorAll('.service-card, .testimonial').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
